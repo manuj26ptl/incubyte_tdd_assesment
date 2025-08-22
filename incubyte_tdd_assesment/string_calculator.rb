@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class StringCalculator
+  
+  DEFAULT_DELIMITER = /,/
 
   def self.add(numbers)
     return 0 if numbers == ""
-    return numbers.to_i if numbers.match?(/^\d+$/)
-
-    nil
+    
+    tokens = numbers.split(DEFAULT_DELIMITER)
+    tokens.map!(&:to_i)
+    tokens.sum
   end
 end
