@@ -9,6 +9,10 @@ class StringCalculator
     delimiter, body = parse_delimiter_and_body(numbers)
 
     tokens = body.split(delimiter).map!(&:to_i)
+    
+    negatives = tokens.select(&:negative?)
+    raise "negative numbers not allowed #{negatives.join(',')}" if negatives.any?
+
     tokens.sum
   end
 
