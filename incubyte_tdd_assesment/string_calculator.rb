@@ -4,7 +4,8 @@ class StringCalculator
 
   def self.add(numbers)
     return 0 if numbers == ""
-    # Intentionally return nil for now
+    return numbers.to_i if numbers.match?(/^\d+$/)
+
     nil
   end
 end
